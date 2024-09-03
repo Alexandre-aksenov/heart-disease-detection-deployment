@@ -6,7 +6,7 @@ Example classifier for predicting heart disease is deployed using <code>fastapi<
 This dataset comes from:
 https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset/.
 
-It contains 1025 columns and 12 features.
+It contains 1025 rows and 12 features.
 The column <code>thal</code> is predicted, and the previous <code>target</code> is removed.
 
 <b>About the problem.</b>
