@@ -7,8 +7,12 @@ RUN python -m pip install uvicorn==0.24.0.post1 fastapi==0.105.0 pandas==2.1.1 s
 WORKDIR /app
 COPY model.py model.py
 COPY fast_api.py fast_api.py
-COPY RF_classifier.pkl RF_classifier.pkl  # the trained Random-Forest classifier
-COPY dict_feat.py dict_feat.py  # the conversion list of values -> dict
+
+# the trained Random-Forest classifier
+COPY RF_classifier.pkl RF_classifier.pkl  
+
+# the conversion list of values -> dict
+COPY dict_feat.py dict_feat.py  
 
 EXPOSE 5002
 
