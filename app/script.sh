@@ -8,28 +8,28 @@
 # Possible improvement. Allowing the user to upload a file to the web-page 
 # can lead to a more practical UI.
 
-sudo docker build -t fast-api-rf .
+docker build -t fast-api-rf-np1 .
 
-sudo docker images  
-# 'fast-api-RF' should appear with size near 1.45GB
+docker images
+# 'fast-api-RF' should appear with size near 1.56GB
 
-sudo docker run --name container-rf -d --rm -p 5002:5002 fast-api-rf
+docker run --name container-rf-np1 -d --rm -p 5003:5003 fast-api-rf-np1
 
-sudo docker ps
-# 'container-rf' should appear in the list
+docker ps
+# 'container-rf-np1' should appear in the list
 
 # The following calls can be tested, e.g. in Postman:
 
-# localhost:5002/
+# localhost:5003/
 # -> (status 200)
 # "message": "FastAPI Hello World"
 
-# localhost:5002/dummypredict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=2
+# localhost:5003/dummypredict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=2
 # (dummy predict for testing that data is read and converted to a Dataframe of floats )
 # -> (status 200)
 #"Dummy predict:\n    age  sex   cp  trestbps   chol  ...  thalach  exang  oldpeak  slope   ca\n0  52.0  0.0  0.0     170.0  225.0  ...    146.0    1.0      2.8    1.0  2.0\n\n[1 rows x 12 columns]" 
 
-# localhost:5002/predict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=2
+# localhost:5003/predict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=2
 # (getting the pedicted value of 'thal' for an example vector of features)
 # -> (status 200 OK)
 # "[1]"
