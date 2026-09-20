@@ -5,7 +5,7 @@ feat_names = [
 ]
 
 
-def dict_feat(lst_vals):
+def dict_feat(lst_vals: list[float]) -> dict[str, float]:
     """
         Places 12 features into a dict.
         Input: the values of 12 features.

@@ -1,3 +1,6 @@
+from pandas.core.frame import DataFrame
+
+
 class Model:
     """
     Call the trained Random Forest classifier on a given vector of features.
@@ -7,14 +10,14 @@ class Model:
     def __init__(self, name='') -> None:
         self.name = name
 
-    def dict_2_DF(self, example):
+    def dict_2_DF(self, example: dict[str, float]) -> DataFrame:
         """
         dict -> dataframe with one row
         """
-        import pandas as pd
-        return pd.DataFrame([example])
+        # import pandas as pd
+        return DataFrame([example])
 
-    def dummy_predict(self, example={}):
+    def dummy_predict(self, example: dict[str, float]):
         """
         Print the dataframe, which corresponds to the given dict.
         This dummy prediction is useful for testing
@@ -23,7 +26,7 @@ class Model:
         inDF = self.dict_2_DF(example)
         return 'Dummy predict:\n' + str(inDF)
 
-    def predict(self, example={}) -> str:
+    def predict(self, example: dict[str, float]) -> str:
         """
         Loads the model from the file, evaluates on the given feature vector.
 
@@ -56,7 +59,11 @@ def main():
     with open("ex_dict_Features.pkl", 'rb') as f:
         example_data = pickle.load(f)
 
+    print('example_data:')
     print(type(example_data))  # 'dict'
+    print(example_data)
+    # {'age': 58.0, 'sex': 0.0, 'cp': 0.0, 'trestbps': 170.0, 'chol': 225.0, 'fbs': 1.0, 'restecg': 0.0, 'thalach': 146.0, 'exang': 1.0, 'oldpeak': 2.8, 'slope': 1.0, 'ca': 2.0}
+    print('----')
 
     model = Model('RF')
 
