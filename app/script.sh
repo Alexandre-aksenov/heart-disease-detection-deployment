@@ -1,7 +1,6 @@
 # The instructions for building a container and deploying a FastAPI,
 # which predicts 'thal' using the trained Random-Forest classifier.
 
-# All docker instructions are prepended with 'sudo'.
 
 # N.B. The example vector of features (also provided as dictionary in the file 'ex_dict_Features.pkl')
 # is the 3rd row of the test set obtained while training the classifier.
@@ -10,8 +9,8 @@
 
 docker build -t fast-api-rf-np1 .
 
-docker images
-# 'fast-api-RF' should appear with size near 1.56GB
+docker images  
+# 'fast-api-rf-np1' appears with size near 1.56GB
 
 docker run --name container-rf-np1 -d --rm -p 5003:5003 fast-api-rf-np1
 
@@ -21,7 +20,7 @@ docker ps
 # The following calls can be tested, e.g. in Postman:
 
 # localhost:5003/
-# -> (status 200)
+# -> (expected: status 200)
 # "message": "FastAPI Hello World"
 
 # localhost:5003/dummypredict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=2
@@ -35,4 +34,4 @@ docker ps
 # "[1]"
 
 # When all tests are done, the container can be closed using: 
-# sudo docker stop container-rf
+# docker stop container-rf-np1
