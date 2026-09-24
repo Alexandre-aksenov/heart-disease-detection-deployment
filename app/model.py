@@ -1,4 +1,4 @@
-from pandas.core.frame import DataFrame
+from polars.dataframe.frame import DataFrame
 
 
 class Model:
@@ -14,7 +14,6 @@ class Model:
         """
         dict -> dataframe with one row
         """
-        # import pandas as pd
         return DataFrame([example])
 
     def dummy_predict(self, example: dict[str, float]):
@@ -43,6 +42,12 @@ class Model:
         # load the trained model
         with open("RF_classifier.pkl", 'rb') as f:
             clf_from_saved = pickle.load(f)
+        """
+        clf: RandomForestClassifier(n_estimators=50, random_state=1)
+        feature names: ['age' 'sex' 'cp' 'trestbps' 'chol' 'fbs' 'restecg' 'thalach' 'exang'
+         'oldpeak' 'slope' 'ca']
+        n_features_in_: 12
+        """
 
         # predict
         pred = clf_from_saved.predict(inDF)
