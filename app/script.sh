@@ -61,5 +61,11 @@ curl "http://localhost:5003/predict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=
 #->
 # "[1]"
 
+# Test with an incorrect input type
+curl "http://localhost:5003/predict?age=52&sex=0&cp=0&trestbps=170&chol=225&fbs=1&restecg=0&thalach=146&exang=1&oldpeak=2.8&slope=1&ca=aa"
+#->
+# {"detail":[{"type":"float_parsing","loc":["query","ca"],"msg":"Input should be a valid number, unable to parse string as a number","input":"aa"}]}
+# Clear error message!
+
 # When all tests are done, the container can be closed using: 
 # docker stop fast-api-rf-pl

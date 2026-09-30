@@ -7,7 +7,7 @@
 
 FROM python:3.14
 
-RUN python -m pip install uvicorn==0.52.4 fastapi==0.138 polars==1.41 scikit-learn==1.9
+RUN python -m pip install uvicorn==0.52.4 fastapi==0.138 polars==1.41 scikit-learn==1.9 pydantic==2.13
 
 WORKDIR /app
 COPY model.py model.py
