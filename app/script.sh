@@ -10,7 +10,7 @@
 docker build -t fast-api-rf-pl .
 
 docker images  
-# 'fast-api-rf-pl' appears with size near 1.56GB -> ..
+# 'fast-api-rf-pl' appears with size near 1.75GB
 
 docker run --name fast-api-rf-pl -d --rm -p 5003:5003 fast-api-rf-pl
 
